@@ -1,0 +1,42 @@
+{% extends 'main/layout.html' %}
+
+
+{% block title %}Главная страница{% endblock %}
+
+
+{% block content %}
+{% load static %}
+    <div class="features">
+    <h1>291 ИБ ФМИ</h1>
+    <p>Сайт освещает деятельность 291 группы ФМИ и её участие в различных мероприятиях</p>
+
+    </div>
+    <div class="group-photo">
+        <img src="{% static 'main/img/291.jpg' %}" alt="Фото группы" />
+    </div>
+
+<style>
+.group-photo img {
+    display: block;
+    width: 40%;
+    height: auto;
+    object-fit: cover;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main .features {
+    float: left;
+    color: #ffff;
+    margin-top: 10px;
+    text-align: center;
+    width: 75%;
+}
+
+main .features h1 {
+    font-size: 50px;
+}
+
+</style>
+{% endblock %}

@@ -1,0 +1,63 @@
+body{
+    background: #2c2c2c;
+}
+
+aside{
+    float: left;
+    background: #181818;
+    width: 20%;
+    padding: 2.5%;
+    min-height: 190vh; /* Минимальная высота 100% от высоты окна */
+    height: auto; /* Позволяет элементу расти при необходимости */
+    color: #ffff;
+    brder-right: 5px solid #4d4d4d;
+}
+
+
+aside img {
+    width: 80px;
+    float: left;
+}
+
+aside .logo {
+    font-size: 40px;
+    margin-left: 10px;
+    font-weight: bold;
+    position: relative;
+    top: +12px;
+}
+
+aside h3{
+    margin-top: 50px;
+    font-size: 28px;
+}
+
+aside ul {list-style: none}
+
+aside ul li {
+    color: #ffff;
+    display: block;
+    margin-top: 20px;
+    transition: all .7s ease;
+
+}
+
+aside ul li:hover, aside ul a:hover {
+    color: #eb5050;
+    text-decoration: none;
+    transform: scale(1.1);
+
+}
+
+main .features {
+    float: left;
+    color: #ffff;
+    margin-top: 100px;
+    text-align: center;
+    width: 75%;
+}
+
+main .features h1 {font-size: 50px;}
+/*!  main .features p {max-width: 400px; margi: 50px auto;} !*/
+
+
