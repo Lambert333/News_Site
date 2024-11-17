@@ -1,14 +1,101 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Про нас</title>
-</head>
-<body>
-    <h1>Про нас</h1>
-    <p>Привет!</p>
-</body>
-</html>
+{% extends 'main/layout.html' %}
+
+{% block title %}
+Про нас
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="features">
+    <h1>Разработчики</h1>
+
+
+    <div class="team-grid">
+        <div class="team-member">
+            <div class="member-photo">
+                <img src="{% static 'main/img/Виктор.png' %}" alt="Фото участника 1" />
+            </div>
+            <div class="member-info">
+                <h3>Чаплыгин Виктор</h3>
+                <p class="description">Пубертатная язва</p>
+            </div>
+        </div>
+
+        <div class="team-member">
+            <div class="member-photo">
+                <img src="{% static 'main/img/Иван.png' %}" alt="Фото участника 2" />
+            </div>
+           <div class="member-info">
+                <h3>Дементьев Иван</h3>
+                <p class="description">Лидер 21 века</p>
+            </div>
+        </div>
+
+        <div class="team-member">
+            <div class="member-photo">
+                <img src="{% static 'main/img/Максим.png' %}" alt="Фото участника 3" />
+            </div>
+           <div class="member-info">
+                <h3>Воробьев Максим</h3>
+                <p class="description">Какой то мужик</p>
+            </div>
+        </div>
+
+        <div class="team-member">
+            <div class="member-photo">
+                <img src="{% static 'main/img/Артемий.png' %}" alt="Фото участника 4" />
+            </div>
+            <div class="member-info">
+                <h3>Здор Артемий</h3>
+                <p class="description">Злодей Британец</p>
+            </div>
+        </div>
+
+<style>
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.team-member {
+    background: #fff;
+    border-radius: 8px;
+}
+
+.member-photo img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.member-info {
+    padding: 1.5rem;
+}
+
+.member-info h3 {
+    margin: 0 0 0.5rem 0;
+    color: #333;
+}
+
+.description {
+    color: #444;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+main .features {
+    float: left;
+    color: #ffff;
+    margin-top: 10px;
+    text-align: center;
+    width: 75%;
+}
+
+main .features h1 {
+    font-size: 50px;
+}
+
+</style>
+{% endblock %}
