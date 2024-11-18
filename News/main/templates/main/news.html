@@ -9,9 +9,9 @@
     <div class="news-section">
         <div class="tabs">
             <h2>Новости</h2>
-            <button class="tablinks" onclick="openTab(event, 'upcoming')">Предстоящие</button>
-            <button class="tablinks" onclick="openTab(event, 'current')" id="defaultOpen">Текущие</button>
-            <button class="tablinks" onclick="openTab(event, 'past')">Прошедшие</button>
+<!--            <button class="tablinks" onclick="openTab(event, 'upcoming')">Предстоящие</button>-->
+<!--            <button class="tablinks" onclick="openTab(event, 'current')" id="defaultOpen">Текущие</button>-->
+<!--            <button class="tablinks" onclick="openTab(event, 'past')">Прошедшие</button>-->
         </div>
         <div class="posts">
             {% for el in news %}
@@ -110,7 +110,17 @@
         text-align: left;
         flex-direction: row;
         align-items: center;
-
+        font-family: "Helvetica",sans-serif;
+    }
+    .posts p {
+        font-size: 1.3rem !important;
+        line-height: 1.7;
+        font-weight: 400;
+        font-family: Georgia, serif;
+    }
+    .posts h3 {
+        font-weight: 700;
+        font-family: "Helvetica",sans-serif;
     }
     .posts h5 {
         text-align: right;

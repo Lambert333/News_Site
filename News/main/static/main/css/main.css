@@ -11,8 +11,8 @@ aside{
     background: #181818;
     width: 20%;
     padding: 2.5%;
-    min-height: 190vh; /* Минимальная высота 100% от высоты окна */
-    height: auto; /* Позволяет элементу расти при необходимости */
+    min-height: 300vh; /* Минимальная высота 100% от высоты окна */
+    height: max-content ; /* Позволяет элементу расти при необходимости */
     color: #ffff;
     brder-right: 5px solid #4d4d4d;
 }
