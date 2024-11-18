@@ -3,142 +3,176 @@
 {% block title %}Главная страница{% endblock %}
 
 {% block content %}
-    {% load static %}
+{% load static %}
 
-    <div class="centered-container">
-        <div class="news-section">
+<div class="centered-container">
+    <div class="news-section">
+        <div class="tabs">
             <h2>Новости</h2>
-            <div class="tabs">
-                <button class="tablinks" onclick="openTab(event, 'upcoming')">Предстоящие</button>
-                <button class="tablinks" onclick="openTab(event, 'past')">Прошедшие</button>
-            </div>
+            <button class="tablinks" onclick="openTab(event, 'upcoming')">Предстоящие</button>
+            <button class="tablinks" onclick="openTab(event, 'current')" id="defaultOpen">Текущие</button>
+            <button class="tablinks" onclick="openTab(event, 'past')">Прошедшие</button>
+        </div>
+        <div class="posts">
             {% for el in news %}
-                <div class="alert-warning">
-                    <h3>{{ el.title }}</h3>
-                    <p>{{ el.content }}</p>
-                </div>
-            {% endfor %}
-            <div id="upcoming" class="tabcontent">
-                <h3>Предстоящие события</h3>
-                <ul>
-                    <!-- Здесь будет код для загрузки предстоящих новостей из БД -->
-                    {#
-                    {% for news in upcoming_news %}
-                        <li>{{ news.title }} - {{ news.date }}</li>
-                    {% endfor %}
-                    #}
-                    <li>Пример предстоящего события 1 - 2023-12-01</li>
-                    <li>Пример предстоящего события 2 - 2023-12-15</li>
-                </ul>
-            </div>
+        <div class="alert alert-warning">
+            <h3>{{ el.title }}</h3>
+            <h5 >Автор: {{ el.author }}</h5>
+            <h6>Дата публикации: {{ el.date }}</h6>
+            <p>{{ el.content | safe }}</p>
+        </div>
+        {% endfor %}
+        </div>
+        <div id="upcoming" class="tabcontent">
+            <h3>Предстоящие события</h3>
+            <ul>
+                <!-- Здесь будет код для загрузки предстоящих новостей из БД -->
 
-            <div id="past" class="tabcontent" style="display:none">
-                <h3>Прошедшие события</h3>
-                <ul>
-                    <!-- Здесь будет код для загрузки прошедших новостей из БД -->
-                    {#
-                    {% for news in past_news %}
-                        <li>{{ news.title }} - {{ news.date }}</li>
-                    {% endfor %}
-                    #}
-                    <li>Пример прошедшего события 1 - 2023-11-01</li>
-                    <li>Пример прошедшего события 2 - 2023-11-15</li>
-                </ul>
-            </div>
+                {% for news in upcoming_news %}
+                <li>{{ news.title }} - {{ news.date }}</li>
+                {% endfor %}
+
+                <li>Пример предстоящего события 1 - 2023-12-01</li>
+                <li>Пример предстоящего события 2 - 2023-12-15</li>
+            </ul>
+        </div>
+
+        <div id="past" class="tabcontent" style="display:none">
+            <h3>Прошедшие события</h3>
+            <ul>
+                <!-- Здесь будет код для загрузки прошедших новостей из БД -->
+
+                {% for news in past_news %}
+                <li>{{ news.title }} - {{ news.date }}</li>
+                {% endfor %}
+
+                <li>Пример прошедшего события 1 - 2023-11-01</li>
+                <li>Пример прошедшего события 2 - 2023-11-15</li>
+            </ul>
         </div>
     </div>
+</div>
 
-    <style>
-        .group-photo img {
-            display: block;
-            width: 40%;
-            height: auto;
-            object-fit: cover;
-            text-align: center;
-            margin-left: auto;
-            margin-right: auto;
+<style>
+    .group-photo img {
+        display: block;
+        width: 40%;
+        height: auto;
+        object-fit: cover;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .tabs {
+        margin: 20px 0;
+        text-align: center;
+        width: 800px;
+        color: white;
+    }
+
+    .tablinks {
+        cursor: pointer;
+        padding: 10px;
+        background-color: #f1f1f1;
+        border: none;
+        outline: none;
+        transition: transform 0.3s, background-color 0.3s; /* Добавляем переход для transform */
+    }
+
+    .tablinks:hover {
+        transform: scale(1.1); /* Увеличиваем кнопку на 10% при наведении */
+        background-color: #0099FF; /* Изменяем цвет фона при наведении (по желанию) */
+    }
+
+    .tabcontent {
+        display: none;
+        padding: 20px;
+        border: 1px solid #ffffff;
+        color: white;
+    }
+
+    /* Новый стиль для центрирования элементов на странице */
+    .centered-container {
+
+        text-align: center;
+        flex-direction: column; /* Вертикальное расположение элементов */
+        align-items: center; /* Центрируем элементы по горизонтали (если нужно) */
+        width: 80%; /* Занимаем всю ширину */
+
+    }
+
+    .alert-warning{
+        /*white-space: pre-line;*/
+        word-break: normal;
+        float: left;
+        width: 800px;
+        text-align: left;
+        flex-direction: row;
+        align-items: center;
+
+    }
+    .posts h5 {
+        text-align: right;
+        font-weight: bold;
+    }
+    .posts h6 {
+        text-align: right;
+        font-weight: bold;
+    }
+
+    .posts img {
+    width: 800px;
+    max-width: 100%;
+        text-align: center;
+}
+    .news-section {
+        text-align: center;
+        width: 800px;
+        margin-left: 600px;
+        width: 100%; /* Измените это значение по вашему усмотрению */
+        max-width: 600px; /* Максимальная ширина для секции новостей */
+
+    {
+
+        aside ul, li, h2, h3 {
+            color: #ffffff;
         }
 
-        .tabs {
-            margin: 20px 0;
+        ul {
+            list-style-type: none; /* Убираем маркеры */
+            padding: 0; /* Убираем отступы по умолчанию */
         }
 
-        .tablinks {
-            cursor: pointer;
-            padding: 10px;
-            background-color: #f1f1f1;
-            border: none;
-            outline: none;
-            transition: transform 0.3s, background-color 0.3s; /* Добавляем переход для transform */
+        li {
+            margin: 5px 0; /* Добавляем отступы между элементами списка (по желанию) */
+            color: #ffffff; /* Устанавливаем цвет текста для элементов списка */
         }
+    }
 
-        .tablinks:hover {
-            transform: scale(1.1); /* Увеличиваем кнопку на 10% при наведении */
-            background-color: #0099FF; /* Изменяем цвет фона при наведении (по желанию) */
+    }
+</style>
+
+<style>
+
+</style>
+
+<script>
+    function openTab(evt, tabName) {
+        // Скрыть все вкладки
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
         }
-
-        .tabcontent {
-            display: none;
-            padding: 20px;
-            border: 1px solid #ffffff;
-
+        // Удалить активный класс у всех кнопок
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
-
-        /* Новый стиль для центрирования элементов на странице */
-        .centered-container {
-
-            text-align: center;
-            flex-direction: column; /* Вертикальное расположение элементов */
-            align-items: center; /* Центрируем элементы по горизонтали (если нужно) */
-            width: 80%; /* Занимаем всю ширину */
-
-        }
-
-        .news-section {
-            margin-left: 500px;
-            width: 80%; /* Измените это значение по вашему усмотрению */
-            max-width: 800px; /* Максимальная ширина для секции новостей */
-
-        {#.alert-warning {#}{#    float: left;#}{#    clear: both;#}{#    width: 400px;#}{#    margin: 20px 34%;#}{#    text-align: left;#}{#    background-color: #ffffff;#} {
-        #}#}
-
-            aside ul, li, h2, h3 {
-                color: #ffffff;
-            }
-
-            ul {
-                list-style-type: none; /* Убираем маркеры */
-                padding: 0; /* Убираем отступы по умолчанию */
-            }
-
-            li {
-                margin: 5px 0; /* Добавляем отступы между элементами списка (по желанию) */
-                color: #ffffff; /* Устанавливаем цвет текста для элементов списка */
-            }
-        }
-        }
-    </style>
-
-    <style>
-
-    </style>
-
-    <script>
-        function openTab(evt, tabName) {
-            // Скрыть все вкладки
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            // Удалить активный класс у всех кнопок
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            // Показать текущую вкладку и добавить активный класс к кнопке
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-    </script>
+        // Показать текущую вкладку и добавить активный класс к кнопке
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
 {% endblock %}
