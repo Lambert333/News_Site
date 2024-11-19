@@ -16,14 +16,14 @@ from django.db import models
 
 class Image(models.Model):
     title = models.CharField("Название", max_length=150,blank= True, null=True)
-    image = models.ImageField("Загрузить изображение", upload_to='images/', blank= False)
+    image = models.FileField("Загрузить файл", upload_to='files/', blank= False, null=True)
 
     def __str__(self):
         return self.title
 
     class Meta:
-        verbose_name_plural = 'Изображения'
-        verbose_name = 'Изображение'
+        verbose_name_plural = 'Файлы'
+        verbose_name = 'Файл'
 class News(models.Model):
     # id = models.IntegerField(primary_key=True)
     date = models.DateTimeField("Дата")
